@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>URL Shortener</h1>
+
+    <form action="/gui/url" method="post">
+        <input type="text" id="long_url" name="long_url" placeholder="Enter your long URL here">
+        <input type="submit" value="Shorten">
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% else %}
+        {% if short_url %}
+            <div class="result">
+                <p>Short URL: <a href="{{ short_url }}">{{ short_url }}</a></p>
+                <p>URL Key: {{ url_key }}</p>
+            </div>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

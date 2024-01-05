@@ -10,3 +10,6 @@ class URLCreateResponseBase(BaseModel):
 
     class Config:
         orm_mode = True
+
+class URLCreateResponseLocation(BaseModel):
+    location: str
